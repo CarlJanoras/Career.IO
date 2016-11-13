@@ -1,0 +1,12 @@
+.noradius {
+	border-radius: 0;
+}
+
+.search-head {
+	height: 75px;
+}
+
+.pagination-color {
+	background-color: black;
+	font-size: 50px;
+}
