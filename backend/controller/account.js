@@ -1,6 +1,6 @@
 'use strict'; 
 
-var db = require(__dirname + '/../lib/mysql');
+var db = require(__dirname + '/../mysql');
 
 exports.create = function(req, res) {
 	var queryString = "INSERT INTO account"

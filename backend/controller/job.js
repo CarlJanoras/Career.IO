@@ -1,10 +1,10 @@
 'use strict'; 
 
-var db = require(__dirname + '/../lib/mysql');
+var db = require(__dirname + '/../mysql');
 
 exports.findAll = function(req, res) {
 	var queryString = "SELECT *"
-					+ "FROM job";
+					+ "FROM MOCK_DATA";
 	db.query(
 		queryString, 
 		function(err, rows) {
