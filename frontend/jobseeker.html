@@ -1,6 +1,5 @@
 <!doctype html>
-<html ng-app="profile">
-
+<html ng-app="jobseeker">
 <head>
 	<title>Profile</title>
 	<meta charset="utf-8" />
@@ -11,39 +10,14 @@
 	<script src="assets/jquery-3.1.1.min.js"></script>
 	<script src="assets/bootstrap.min.js"></script>
 </head>
-
 <body>
-	<nav class="noradius navbar navbar-dark bg-inverse">
-		<div class="container">
-			<a class="navbar-brand logo" href="#"><strong>CAREER.IO</strong></a>
-			<ul class="nav navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Employers</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Find Jobs</a>
-				</li>
-			</ul>
-			<form class="form-inline float-xs-right">
-				<button class="btn btn-success" type="submit">Signup</button>
-				<button class="btn btn-outline-success" type="submit">Login</button>
-			</form>
-		</div>
-	</nav>
-	<ol class="breadcrumb">
-		<div class="container">
-			<li class="breadcrumb-item"><a href="#">Home</a></li>
-			<li class="breadcrumb-item active">Profile</li>
-		</div>
-	</ol>
+	<div ng-include src="'header.html'"></div>
+	<div ng-controller="jobSeekerController">
 	<div class="container">
 		<div class="card">
 			<div class="card-block bg-faded">
-				<h4 class="card-title">Kendrick Timothy B. Mercado</h4>
-				<h6 class="card-subtitle text-muted">Los Banos, Philippines</h6>
+				<h4 class="card-title">{{ profile.name }}</h4>
+				<h6 class="card-subtitle text-muted">{{ profile.location }}</h6>
 			</div>
 			<div class="card-block row">
 				<div class="col-lg-2">
@@ -52,47 +26,43 @@
 				<div class="col-lg-5 text-justify">
 					<h5><strong>About me</strong></h5>
 					<hr>
-					<span class="display-6">The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</span>
+					<span class="display-6">{{ profile.description }}</span>
 				</div>
 				<div class="col-lg-5">
 					<h5><strong>Skills</strong></h5>
 					<hr>
-					<span class="tag tag-success">Programming</span>
-					<span class="tag tag-primary">Web Design</span>
-					<span class="tag tag-info">Graphic Design</span>
-					<span class="tag tag-danger">Android/iOS Development</span>
-					<span class="tag tag-warning">Linux</span>
+					<span ng-repeat="skill in profile.skills" class="tag tag-success">{{ skill }}</span>
 					<br><br>
 					<h5><strong>Contact</strong></h5>
 					<hr>
-					<i class="fa fa-envelope" aria-hidden="true"></i> <code class="display-6">mightymercado@gmail.com</code><br>
-					<i class="fa fa-phone" aria-hidden="true"></i> <code class="display-6">09275532184</code>
+					<i class="fa fa-envelope" aria-hidden="true"></i> <code class="display-6">{{ profile.email }}</code><br>
+					<i class="fa fa-phone" aria-hidden="true"></i> <code class="display-6">{{ profile.number }}</code>
 				</div>
 			</div>
 			<div class="card-block">
 				<h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> <strong>Education</strong></h5>
 				<hr>
-				<div id="accordion" role="tablist" aria-multiselectable="true">
+				<div ng-repeat="education in profile.education" id="accordion" role="tablist" aria-multiselectable="true">
 					<div class="card">
-						<div class="card-header" role="tab" id="headingOne">
+						<div class="card-header" role="tab" id="heading{{$index}}">
 							<h6 class="mb-0">
-								<a class="collapsed text-black" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">University of the Philippines Los Banos</a>
+								<a class="collapsed text-black" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">{{ education.school }}</a>
 							</h6>
 						</div>
-						<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+						<div id="collapse{{$index}}" class="collapse" role="tabpanel" aria-labelledby="heading{{$index}}">
 							<div class="card-block">
 								<div class="row">
 									<div class="col-lg-3 text-justify">
 										<h6><i class="fa fa-university" aria-hidden="true"></i> <strong>Education Attainment</strong></h6>
-										<span class="display-6">College</span>
+										<span class="display-6">{{ education.attainment }}</span>
 									</div>
 									<div class="col-lg-2 text-justify">
 										<h6><i class="fa fa-calendar" aria-hidden="true"></i> <strong>From</strong></h6>
-										<span class="display-6">August 2014</span>
+										<span class="display-6"> {{ education.start  }} </span>
 									</div>
 									<div class="col-lg-2 text-justify">
 										<h6><i class="fa fa-calendar" aria-hidden="true"></i> <strong>To</strong></h6>
-										<span class="display-6">May 2016</span>
+										<span class="display-6"> {{ education.end }}</span>
 									</div>
 								</div>
 								<br>
@@ -100,7 +70,7 @@
 									<div class="col-lg-6 text-justify">
 										<h6><i class="fa fa-trophy" aria-hidden="true"></i> <strong>Achievements/Description</strong></h6>
 										<span class="display-6">
-											The quick brown fox jumps over the lazy dog. Little did he know about the brown god who stole whatever.
+											{{ education.description }}
 										</span>
 									</div>
 								</div>
@@ -112,27 +82,27 @@
 			<div class="card-block">
 				<h5><i class="fa fa-briefcase" aria-hidden="true"></i> <strong>Work Experience</strong></h5>
 				<hr>
-				<div id="accordion" role="tablist" aria-multiselectable="true">
+				<div ng-repeat="work in profile.work" id="accordion" role="tablist" aria-multiselectable="true">
 					<div class="card">
-						<div class="card-header" role="tab" id="headingOne">
+						<div class="card-header" role="tab" id="heading{{ $index }}">
 							<h6 class="mb-0">
-								<a class="collapsed text-black" data-toggle="collapse" data-parent="#accordion" href="#workOne" aria-expanded="true" aria-controls="workOne">Kalibrr</a>
+								<a class="collapsed text-black" data-toggle="collapse" data-parent="#accordion" href="#work{{$index}}" aria-expanded="true" aria-controls="work{{$index}}">{{work.company}}</a>
 							</h6>
 						</div>
-						<div id="workOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+						<div id="work{{$index}}" class="collapse" role="tabpanel" aria-labelledby="heading{{$index}}">
 							<div class="card-block">
 								<div class="row">
 									<div class="col-lg-3 text-justify">
 										<h6><i class="fa fa-university" aria-hidden="true"></i> <strong>Job Title</strong></h6>
-										<span class="display-6">Junior Developer</span>
+										<span class="display-6">{{ work.title }}</span>
 									</div>
 									<div class="col-lg-2 text-justify">
 										<h6><i class="fa fa-calendar" aria-hidden="true"></i> <strong>From</strong></h6>
-										<span class="display-6">August 2014</span>
+										<span class="display-6">{{ work.start }}</span>
 									</div>
 									<div class="col-lg-2 text-justify">
 										<h6><i class="fa fa-calendar" aria-hidden="true"></i> <strong>To</strong></h6>
-										<span class="display-6">May 2016</span>
+										<span class="display-6">{{ work.end }}</span>
 									</div>
 								</div>
 								<br>
@@ -140,7 +110,7 @@
 									<div class="col-lg-6 text-justify">
 										<h6><i class="fa fa-trophy" aria-hidden="true"></i> <strong>Achievements/Description</strong></h6>
 										<span class="display-6">
-											The quick brown fox jumps over the lazy dog. Little did he know about the brown god who stole whatever.
+											{{ work.description }}
 										</span>
 									</div>
 								</div>
@@ -151,14 +121,9 @@
 			</div>
 		</div>
 	</div>
-	<footer class="footer">
-		<div class="container">
-			<hr>
-			<p class="text-muted">© CAREER.IO 2016</p>
-		</div>
-	</footer>
+	<div ng-include src="'footer.html'"></div>
 	<script src="assets/angular.min.js"></script>
-	<script src="controller/searchjob.js"></script>
+	<script src="controller/jobseeker.js"></script>
 </body>
 
 </html>

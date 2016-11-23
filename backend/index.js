@@ -1,6 +1,6 @@
-'use strict'; 
+'use strict';
 
-var config = require(__dirname + '/config'); 
+var config = require(__dirname + '/config');
 var express = require('express'),
 	session = require('express-session'),
 	bodyParser = require('body-parser'),

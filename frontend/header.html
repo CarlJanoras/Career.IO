@@ -1,0 +1,29 @@
+<div ng-app="">
+	<nav class="noradius navbar navbar-dark bg-inverse">
+		<div class="container">
+			<a class="navbar-brand logo" href="#"><strong>CAREER.IO</strong></a>
+			<ul class="nav navbar-nav">
+				<li class="nav-item" ng-class="{active: location == 'Home'}">
+
+					<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item" ng-class="{active: location == 'Employers'}">
+					<a class="nav-link" href="employer.html">Employers</a>
+				</li>
+				<li class="nav-item" ng-class="{active: location == 'Jobs'}">
+					<a class="nav-link" href="job.html">Find Jobs</a>
+				</li>
+			</ul>
+			<form class="form-inline float-xs-right">
+				<button class="btn btn-success" type="submit">Signup</button>
+				<button class="btn btn-outline-success" type="submit">Login</button>
+			</form>
+		</div>
+	</nav>
+	<ol class="breadcrumb" id="nav">
+		<div class="container">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item active">Profile</li>
+		</div>
+	</ol>
+</div>

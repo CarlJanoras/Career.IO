@@ -1,6 +1,7 @@
 use jobFinder;
 
-drop table MOCK_DATA; 
+
+drop table if exists MOCK_DATA; 
 
 create table MOCK_DATA (
 	id INT,
