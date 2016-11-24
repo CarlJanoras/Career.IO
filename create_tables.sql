@@ -1,3 +1,7 @@
+drop user if exists 'CMSC127'@'localhost';
+create user 'CMSC127'@'localhost' identified by 'project';
+grant all privileges on jobFinder.* to 'CMSC127'@'localhost' with grant option;
+
 drop database if exists jobFinder;
 create database jobFinder;
 use jobFinder;
