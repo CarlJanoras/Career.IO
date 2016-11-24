@@ -1,0 +1,230 @@
+<!doctype html>
+<html ng-app="job">
+
+<head>
+	<title>Job</title>
+	<meta charset="utf-8" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="assets/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/custom.css">
+	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+	<script src="assets/jquery-3.1.1.min.js"></script>
+	<script src="assets/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="noradius navbar navbar-dark bg-inverse">
+		<div class="container">
+			<a class="navbar-brand logo" href="#"><strong>CAREER.IO</strong></a>
+			<ul class="nav navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Employers</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Find Jobs</a>
+				</li>
+			</ul>
+			<form class="form-inline float-xs-right">
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Signup</button>
+				<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">Login</button>
+			</form>
+		</div>
+	</nav>
+	
+	<ol class="breadcrumb">
+		<div class="container">
+		  <li class="breadcrumb-item"><a href="#">Home</a></li>
+		  <li class="breadcrumb-item"><a href="#">Profile</a></li>
+		  <li class="breadcrumb-item active">Edit Profile</li>
+		</div>
+	</ol>
+	
+	
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+			<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		  </div>
+		  <div class="modal-body">
+			...
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary">Save changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container">
+		<div class="card-block">
+				<div class="card">
+					<div class="card-block">
+						<div class="row">
+							<div class="col-sm-4">
+								<h3><strong>Edit Employer</strong></h5>
+							</div>
+						</div>
+						<div class="card-block">
+							<div class="row">	
+								<div class="col-sm-7">
+									<h4>Name</h4>
+									<br>
+									<div class="form-group row">
+									  <label for="employer-fname" class="col-xs-4 col-form-label">First Name</label>
+									  <div class="col-xs-10">
+										<input class="form-control" type="text" value="Ronire Ivan" id="employer-fname">
+									  </div>
+									</div>
+									<div class="form-group row">
+									  <label for="employer-mname" class="col-xs-4 col-form-label">Middle Name</label>
+									  <div class="col-xs-10">
+										<input class="form-control" type="text" value="Kosiac" id="employer-mname">
+									  </div>
+									</div>
+									<div class="form-group row">
+									  <label for="employer-lname" class="col-xs-4 col-form-label">Last Name</label>
+									  <div class="col-xs-10">
+										<input class="form-control" type="text" value="Alberto" id="employer-lname">
+									  </div>
+									</div>
+								</div>
+							</div>	
+								
+								<br>
+								
+								
+								<div class="row">
+									<div class="col-sm-7">
+									
+										<h4>Location</h4>
+										<br>
+										<div class="form-group row">
+										  <label for="employer-cp" class="col-xs-2 col-form-label">City/Province</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="Los Banos" id="employer-cp">
+										  </div>
+										</div>
+										
+										<div class="form-group row">
+										  <label for="employer-country" class="col-xs-2 col-form-label">Country</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="Philippines" id="employer-country">
+										  </div>
+										</div>
+									</div>
+								</div>
+								
+								<br>
+								
+								<div class="row">
+									<div class="col-sm-7">
+										<h4>Other Info</h4>
+										<br>
+										<div class="form-group row">
+										  <label for="employer-age" class="col-xs-2 col-form-label">Age</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="20" id="employer-age">
+										  </div>
+										</div>
+										
+										<div class="form-group">
+											<label for="employer-sex" >Sex</label>
+											<select class="form-control" id="employer-sex">
+											  <option>Male</option>
+											  <option>Female</option>
+											</select>
+										  </div>
+										
+										<div class="form-group">
+											<label for="employer-abt-me">About Me</label>
+											<textarea class="form-control" id="employer-abt-me" rows="5"></textarea>
+										</div>
+										
+									<div>
+								</div>
+								
+								<br>
+								
+								<h4>Contact Information</h4>
+									<br>
+									<div class="form-group row">
+										  <label for="employer-email" class="col-xs-5 col-form-label">Email Address</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="hello123@gmail.com" id="employer-email">
+										  </div>
+									</div>
+									<div class="form-group row">
+										  <label for="employer-email" class="col-xs-5 col-form-label">Contact number</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="hello123@gmail.com" id="employer-email">
+										  </div>
+									</div>
+								
+								<br>
+								
+								<br>
+								
+								<h4>Company</h4>
+								
+								<br>
+								<div class="form-group row">
+								  <label for="employer-school" class="col-xs-3 col-form-label">Company Name:</label>
+									<div class="col-xs-10">
+										<input class="form-control" type="text" value="Kalibrr" id="employer-school">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="employer-mo" class="col-xs-3 col-form-label">Main Office:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="text" value="College" id="employer-mo">
+								  </div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="employer-from" class="col-xs-2 col-form-label">From:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="month" value="2014-08" id="employer-from">
+								  </div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="employer-to" class="col-xs-2 col-form-label">To:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="month" value="2016-06" id="employer-to">
+								  </div>
+								</div>
+								
+								<div class="form-group">
+									<label for="employer-ad">Innovations/Awards</label>
+									<textarea class="form-control" id="employer-ad" rows="5"></textarea>
+								 </div>
+								 
+								<button type="submit" class="btn btn-primary">Submit</button>
+								 
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+	
+	<footer class="footer">
+		<div class="container">
+			<hr>
+			<p class="text-muted">© CAREER.IO 2016</p>
+		</div>
+	</footer>
+	<script src="assets/angular.min.js"></script>
+	<script src="controller/searchjob.js"></script>
+</body>
+
+</html>
