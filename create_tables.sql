@@ -29,7 +29,7 @@ create table JOB_SEEKER_SKILL (
  skill           varchar(128) not null,
  PRIMARY KEY     (account_id, skill)
   Constraint     `fk_job_seeker_skill_job_seeker`
-  foreign key (account_id) REFERENCES JOB_SEEKER (account_id)
+  foreign key (account_id) REFERENCES JOB_SEEKER (account_id),
   on delete cascade
   on update restrict
 );
