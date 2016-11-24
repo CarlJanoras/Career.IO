@@ -95,8 +95,12 @@ create table REQUIREMENT (
 
 create table REQUIREMENT_SKILL (
  requirement_id        int not null,
- skill_name            varchar(128) not null,
- PRIMARY KEY           (requirement_id, skill_name)
+ skill                varchar(128) not null,
+ PRIMARY KEY            (requirement_id, skill),
+ Constraint            `fk_requirement_skill_requirement`
+  foreign key (requirement_id) references REQUIREMENT (requirement_id)
+  on delete cascade
+  on update restrict
 );
 
 create table WORK_EXPERIENCE (
