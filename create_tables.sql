@@ -13,7 +13,6 @@ create table JOB_SEEKER (
  last_login     date not null,
  creation_date  date not null,
  birthday       date not null,
- age            date not null,
  phone_number   int, 
  sex            enum('male', 'female') not null,
  first_name     varchar(256) not null,
