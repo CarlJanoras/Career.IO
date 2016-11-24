@@ -6,6 +6,7 @@ var path = require('path');
 module.exports = function(router) {
 
     var __ = importer.dirloadSync(__dirname + '/controller');
+    var root_obj = { root: path.join(__dirname, '../frontend') };
 
     router.get('/getJob',               __.job       .getJob            );
     router.get('/getJobSeeker',         __.jobseeker .getJobSeeker      );
@@ -29,7 +30,7 @@ module.exports = function(router) {
     router.get('/searchJob',            __.job       .searchJob         );
     router.get('/searchEmployer',       __.employer  .searchEmployer    );
 
-    var root_obj = { root: path.join(__dirname, '../frontend') };
+    
     router.get('/job',              function(req, res) {
         res.sendFile('job.html',            root_obj);
     });
