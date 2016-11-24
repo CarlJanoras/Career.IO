@@ -61,6 +61,7 @@ create table JOB (
  address                varchar(256),
  city                   varchar(256),
  country                varchar(256),
+ date_posted            date not null,
  account_id             int not null,
  Constraint            `fk_job_employer`
   foreign key (account_id) REFERENCES EMPLOYER (account_id)
@@ -117,11 +118,4 @@ create table APPLIES (
  job_id            int not null,
  date_applied      date not null,
  PRIMARY KEY       (account_id, job_id, date_applied)
-);
-
-create table POSTS (
- account_id        int not null,
- job_id            int not null,
- date_posted       date not null,
- PRIMARY KEY       (account_id, job_id, date_posted)
 );
