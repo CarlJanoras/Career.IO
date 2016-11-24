@@ -7,27 +7,27 @@ create database jobFinder;
 use jobFinder;
 
 create table JOB_SEEKER (
- account_id		int auto_increment primary key not null,
- email			varchar(256) not null,
- password		varchar(256) not null,
- description		varchar(2048),
- last_login		date not null,
+ account_id		   int auto_increment primary key not null,
+ email			       varchar(256) not null,
+ password	     	varchar(256) not null,
+ description		  varchar(2048),
+ last_login	   	date not null,
  creation_date		date not null,
- birthday		date not null,
- phone_number		varchar(11), 
- sex			enum('male', 'female') not null,
- first_name		varchar(256) not null,
- middle_name		varchar(256) not null,
- last_name		varchar(256) not null,
- address		varchar(256),
- city			varchar(256),
- country		varchar(256)
+ birthday		     date not null,
+ phone_number	 	varchar(11), 
+ sex			         enum('male', 'female') not null,
+ first_name		   varchar(256) not null,
+ middle_name		  varchar(256) not null,
+ last_name	    	varchar(256) not null,
+ address		      varchar(256),
+ city			        varchar(256),
+ country	       varchar(256)
 );
 
 create table JOB_SEEKER_SKILL (
- account_id		int not null,
- skill			varchar(128) not null,
- PRIMARY KEY		(requirement_id, skill_name)
+ account_id      int not null,
+ skill           varchar(128) not null,
+ PRIMARY KEY     (requirement_id, skill_name)
 );
 
 create table EMPLOYER (
