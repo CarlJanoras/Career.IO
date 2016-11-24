@@ -1,8 +1,8 @@
 <!doctype html>
-<html ng-app="profile">
+<html ng-app="job">
 
 <head>
-	<title>Profile</title>
+	<title>Job</title>
 	<meta charset="utf-8" />
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="assets/bootstrap.min.css">
@@ -11,7 +11,6 @@
 	<script src="assets/jquery-3.1.1.min.js"></script>
 	<script src="assets/bootstrap.min.js"></script>
 </head>
-
 <body>
 	<nav class="noradius navbar navbar-dark bg-inverse">
 		<div class="container">
@@ -28,135 +27,246 @@
 				</li>
 			</ul>
 			<form class="form-inline float-xs-right">
-				<button class="btn btn-success" type="submit">Signup</button>
-				<button class="btn btn-outline-success" type="submit">Login</button>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#signupModal">Signup</button>
+				<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#loginModel">Login</button>
 			</form>
 		</div>
 	</nav>
+	
 	<ol class="breadcrumb">
 		<div class="container">
-			<li class="breadcrumb-item"><a href="#">Home</a></li>
-			<li class="breadcrumb-item active">Profile</li>
+		  <li class="breadcrumb-item"><a href="#">Home</a></li>
+		  <li class="breadcrumb-item"><a href="#">Profile</a></li>
+		  <li class="breadcrumb-item active">Edit Profile</li>
 		</div>
 	</ol>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+			<h4 class="modal-title" id="myModalLabel">Login</h4>
+		  </div>
+		  <div class="modal-body">
+			<div class="form-group">
+				<label for="loginEmail">Email address</label>
+				<input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">
+			  </div>
+			  <div class="form-group">
+				<label for="exampleInputPassword1">Password</label>
+				<input type="password" class="form-control" id="loginPass" placeholder="Password">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			<button type="button" class="btn btn-primary">Login</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog " role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+			<h4 class="modal-title" id="myModalLabel">Signup</h4>
+		  </div>
+		  <div class="modal-body ">
+				<div class="form-group row">
+				 <label for="employer-fname" class="col-xs-4 col-form-label">First Name</label>
+					<div class="col-xs">
+						<input class="form-control" type="text" value="Ronire Ivan" id="employer-fname">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="employer-mname" class="col-xs-4 col-form-label">Middle Name</label>
+						<div class="col-xs">
+							<input class="form-control" type="text" value="Kosiac" id="employer-mname">
+						</div>
+				</div>
+				<div class="form-group row">
+					<label for="employer-lname" class="col-xs-4 col-form-label">Last Name</label>
+						<div class="col-xs">
+							<input class="form-control" type="text" value="Alberto" id="employer-lname">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="signupEmail">Email address</label>
+					<input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" placeholder="Enter email">
+			  </div>
+			  <div class="form-group">
+				<label for="signupPass">Password</label>
+				<input type="password" class="form-control" id="signupPass" placeholder="Password">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary">Save changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
 	<div class="container">
-		<div class="card">
-				<div class="card-block bg-faded">
-					<h4 class="card-title">Ronire Ivan K. Alberto <span class="tag tag-danger">Employer</span> </h4>
-					<h6 class="card-subtitle text-muted">Makati, Philippines </h6>
-				</div>
-			<div class="card-block row">
-				<div class="col-lg-2">
-					<img src="assets/avatar.png" class="img-thumbnail">
-				</div>
-				<div class="col-lg-5 text-justify">
-					<h5><strong>About me</strong></h5>
-					<hr>
-					<span class="display-6">The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</span>
-				</div>
-				<div class="col-lg-5">
-					<h5><strong>Industry</strong></h5>
-					<hr>
-					<span class="tag tag-success">Information Technology</span>
-					<span class="tag tag-primary">Communications</span>
-					<br><br>
-					<h5><strong>Contact</strong></h5>
-					<hr>
-					<i class="fa fa-font-awesome" aria-hidden="true"></i> <code class="display-6">http://smart.com.ph/corporate</code><br>
-					<i class="fa fa-phone" aria-hidden="true"></i> <code class="display-6">09275532184</code>
-				</div>
-			</div>
-			<div class="card-block">
-				<h5><i class="fa fa-building" aria-hidden="true"></i> <strong>Company</strong></h5>
-				<hr>
-				<div id="accordion" role="tablist" aria-multiselectable="true">
-					<div class="card">
-						<div class="card-header" role="tab" id="headingOne">
-							<h6 class="mb-0">
-								<a class="collapsed text-black" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Smart Communications</a>
-							</h6>
+		<div class="card-block">
+				<div class="card">
+					<div class="card-block">
+						<div class="row">
+							<div class="col-sm-4">
+								<h3><strong>Edit Employer</strong></h5>
+							</div>
 						</div>
-						<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-							<div class="card-block">
-								<div class="row">
-									<div class="col-lg-2 text-justify">
-										<h6><i class="fa fa-calendar" aria-hidden="true"></i> <strong>From</strong></h6>
-										<span class="display-6">January 2016</span>
+						<div class="card-block">
+							<div class="row">	
+								<div class="col-sm-7">
+									<h4>Name</h4>
+									<br>
+									<div class="form-group row">
+									  <label for="employer-fname" class="col-xs-4 col-form-label">First Name</label>
+									  <div class="col-xs-10">
+										<input class="form-control" type="text" value="Ronire Ivan" id="employer-fname">
+									  </div>
 									</div>
-									<div class="col-lg-2 text-justify">
-										<h6><i class="fa fa-calendar" aria-hidden="true"></i> <strong>To</strong></h6>
-										<span class="display-6">Now</span>
+									<div class="form-group row">
+									  <label for="employer-mname" class="col-xs-4 col-form-label">Middle Name</label>
+									  <div class="col-xs-10">
+										<input class="form-control" type="text" value="Kosiac" id="employer-mname">
+									  </div>
+									</div>
+									<div class="form-group row">
+									  <label for="employer-lname" class="col-xs-4 col-form-label">Last Name</label>
+									  <div class="col-xs-10">
+										<input class="form-control" type="text" value="Alberto" id="employer-lname">
+									  </div>
 									</div>
 								</div>
+							</div>	
+								
 								<br>
+								
+								
 								<div class="row">
-									<div class="col-lg-6 text-justify">
-										<h6><i class="fa fa-building-o" aria-hidden="true"></i> <strong>Main Office:</strong></h6>
-										<span class="display-6">
-											Makati City, Philippines
-										</span>
+									<div class="col-sm-7">
+									
+										<h4>Location</h4>
+										<br>
+										<div class="form-group row">
+										  <label for="employer-cp" class="col-xs-2 col-form-label">City/Province</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="Los Banos" id="employer-cp">
+										  </div>
+										</div>
+										
+										<div class="form-group row">
+										  <label for="employer-country" class="col-xs-2 col-form-label">Country</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="Philippines" id="employer-country">
+										  </div>
+										</div>
 									</div>
 								</div>
+								
 								<br>
+								
 								<div class="row">
-									<div class="col-lg-6 text-justify">
-										<h6><i class="fa fa-trophy" aria-hidden="true"></i> <strong>Innovations/Awards</strong></h6>
-										<span class="display-6">
-											The quick brown fox jumps over the lazy dog. Little did he know about the brown god who stole whatever.
-										</span>
+									<div class="col-sm-7">
+										<h4>Other Info</h4>
+										<br>
+										<div class="form-group row">
+										  <label for="employer-age" class="col-xs-2 col-form-label">Age</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="20" id="employer-age">
+										  </div>
+										</div>
+										
+										<div class="form-group">
+											<label for="employer-sex" >Sex</label>
+											<select class="form-control" id="employer-sex">
+											  <option>Male</option>
+											  <option>Female</option>
+											</select>
+										  </div>
+										
+										<div class="form-group">
+											<label for="employer-abt-me">About Me</label>
+											<textarea class="form-control" id="employer-abt-me" rows="5"></textarea>
+										</div>
+										
+									<div>
+								</div>
+								
+								<br>
+								
+								<h4>Contact Information</h4>
+									<br>
+									<div class="form-group row">
+										  <label for="employer-email" class="col-xs-5 col-form-label">Email Address</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="hello123@gmail.com" id="employer-email">
+										  </div>
+									</div>
+									<div class="form-group row">
+										  <label for="employer-email" class="col-xs-5 col-form-label">Contact number</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="hello123@gmail.com" id="employer-email">
+										  </div>
+									</div>
+								
+								<br>
+								
+								<br>
+								
+								<h4>Company</h4>
+								
+								<br>
+								<div class="form-group row">
+								  <label for="employer-school" class="col-xs-3 col-form-label">Company Name:</label>
+									<div class="col-xs-10">
+										<input class="form-control" type="text" value="Kalibrr" id="employer-school">
 									</div>
 								</div>
-							</div>
+								
+								<div class="form-group row">
+								  <label for="employer-mo" class="col-xs-3 col-form-label">Main Office:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="text" value="College" id="employer-mo">
+								  </div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="employer-from" class="col-xs-2 col-form-label">From:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="month" value="2014-08" id="employer-from">
+								  </div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="employer-to" class="col-xs-2 col-form-label">To:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="month" value="2016-06" id="employer-to">
+								  </div>
+								</div>
+								
+								<div class="form-group">
+									<label for="employer-ad">Innovations/Awards</label>
+									<textarea class="form-control" id="employer-ad" rows="5"></textarea>
+								 </div>
+								 
+								<button type="submit" class="btn btn-primary">Submit</button>
+								 
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div class="card-block">
-				<h5><i class="fa fa-sticky-note" aria-hidden="true"></i> <strong>Posts</strong></h5>
-				<hr>
-				<div id="accordion" role="tablist" aria-multiselectable="true">
-					<div class="card">
-						<div class="card-header" role="tab" id="headingOne">
-							<h6 class="mb-0">
-								<a class="collapsed text-black" data-toggle="collapse" data-parent="#accordion" href="#postOne" aria-expanded="true" aria-controls="postOne">
-								November 2016
-								</a>
-							</h6>
-						</div>
-						<div id="postOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-							<div class="card-block">
-								<div class="row">
-									<div class="col-lg-6 text-justify">
-										<a href="#" class="card-link"><p>Hiring: Web Designer</p></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-header" role="tab" id="headingOne">
-							<h6 class="mb-0">
-								<a class="collapsed text-black" data-toggle="collapse" data-parent="#accordion" href="#postTwo" aria-expanded="true" aria-controls="postTwo">
-								October 2016
-								</a>
-							</h6>
-						</div>
-						<div id="postTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-							<div class="card-block">
-								<div class="row">
-									<div class="col-lg-6 text-justify">
-											The quick brown fox jumps over the lazy dog. Little did he know about the brown god who stole whatever.
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
+	
 	<footer class="footer">
 		<div class="container">
 			<hr>
