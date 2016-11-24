@@ -27,7 +27,7 @@ create table JOB_SEEKER (
 create table JOB_SEEKER_SKILL (
  account_id      int not null,
  skill           varchar(128) not null,
- PRIMARY KEY     (requirement_id, skill)
+ PRIMARY KEY     (account_id, skill)
 );
 
 create table EMPLOYER (
