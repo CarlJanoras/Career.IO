@@ -1,0 +1,243 @@
+<!doctype html>
+<html ng-app="job">
+
+<head>
+	<title>Job</title>
+	<meta charset="utf-8" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="assets/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/custom.css">
+	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+	<script src="assets/jquery-3.1.1.min.js"></script>
+	<script src="assets/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="noradius navbar navbar-dark bg-inverse">
+		<div class="container">
+			<a class="navbar-brand logo" href="#"><strong>CAREER.IO</strong></a>
+			<ul class="nav navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Employers</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Find Jobs</a>
+				</li>
+			</ul>
+			<form class="form-inline float-xs-right">
+				<button class="btn btn-success" type="submit">Signup</button>
+				<button class="btn btn-outline-success" type="submit">Login</button>
+			</form>
+		</div>
+	</nav>
+	
+	<ol class="breadcrumb">
+		<div class="container">
+		  <li class="breadcrumb-item"><a href="#">Home</a></li>
+		  <li class="breadcrumb-item"><a href="#">Profile</a></li>
+		  <li class="breadcrumb-item active">Edit Profile</li>
+		</div>
+	</ol>
+	
+	<div class="container">
+		<div class="card-block bg-faded">
+				<div class="card">
+					<div class="card-block">
+						<div class="row">
+							<div class="col-sm-4">
+								<h3><strong>Edit Jobseeker</strong></h5>
+							</div>
+						</div>
+						<div class="card-block">
+							<div class="row">	
+								<div class="col-sm-7">
+									<h4>Name</h4>
+									<br>
+									<div class="form-group row">
+									  <label for="jobseeker-fname" class="col-xs-4 col-form-label">First Name</label>
+									  <div class="col-xs-10">
+										<input class="form-control" type="text" value="Ronire Ivan" id="jobseeker-fname">
+									  </div>
+									</div>
+									<div class="form-group row">
+									  <label for="jobseeker-mname" class="col-xs-4 col-form-label">Middle Name</label>
+									  <div class="col-xs-10">
+										<input class="form-control" type="text" value="Kosiac" id="jobseeker-mname">
+									  </div>
+									</div>
+									<div class="form-group row">
+									  <label for="jobseeker-lname" class="col-xs-4 col-form-label">Last Name</label>
+									  <div class="col-xs-10">
+										<input class="form-control" type="text" value="Alberto" id="jobseeker-lname">
+									  </div>
+									</div>
+								</div>
+							</div>	
+								
+								<br>
+								
+								
+								<div class="row">
+									<div class="col-sm-7">
+									
+										<h4>Location</h4>
+										<br>
+										<div class="form-group row">
+										  <label for="jobseeker-cp" class="col-xs-2 col-form-label">City/Province</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="Los Banos" id="jobseeker-cp">
+										  </div>
+										</div>
+										
+										<div class="form-group row">
+										  <label for="jobseeker-country" class="col-xs-2 col-form-label">Country</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="Philippines" id="jobseeker-country">
+										  </div>
+										</div>
+									</div>
+								</div>
+								
+								<br>
+								
+								<div class="row">
+									<div class="col-sm-7">
+										<h4>Other Info</h4>
+										<br>
+										<div class="form-group row">
+										  <label for="jobseeker-age" class="col-xs-2 col-form-label">Age</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="20" id="jobseeker-age">
+										  </div>
+										</div>
+										
+										<div class="form-group">
+											<label for="jobseeker-sex">Sex</label>
+											<select class="form-control" id="jobseeker-sex">
+											  <option>Male</option>
+											  <option>Female</option>
+											</select>
+										  </div>
+										
+										<div class="form-group">
+											<label for="jobseeker-abt-me">About Me</label>
+											<textarea class="form-control" id="jobseeker-abt-me" rows="5"></textarea>
+										</div>
+										
+									<div>
+								</div>
+								
+								<br>
+								
+								<h4>Contact Information</h4>
+									<br>
+									<div class="form-group row">
+										  <label for="jobseeker-email" class="col-xs-5 col-form-label">Email Address</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="hello123@gmail.com" id="jobseeker-email">
+										  </div>
+									</div>
+									<div class="form-group row">
+										  <label for="jobseeker-email" class="col-xs-5 col-form-label">Contact number</label>
+										  <div class="col-xs-10">
+											<input class="form-control" type="text" value="hello123@gmail.com" id="jobseeker-email">
+										  </div>
+									</div>
+								
+								<br>
+								
+								<br>
+								
+								<h4>Education</h4>
+								
+								<br>
+								<div class="form-group row">
+								  <label for="jobseeker-school" class="col-xs-2 col-form-label">School:</label>
+									<div class="col-xs-10">
+										<input class="form-control" type="text" value="University of the Philippines" id="jobseeker-school">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="jobseeker-age" class="col-xs-2 col-form-label">Attainment</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="text" value="College" id="jobseeker-attainment">
+								  </div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="jobseeker-from" class="col-xs-2 col-form-label">From:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="month" value="2014-08" id="jobseeker-from">
+								  </div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="jobseeker-to" class="col-xs-2 col-form-label">To:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="month" value="2016-06" id="jobseeker-to">
+								  </div>
+								</div>
+								
+								<div class="form-group">
+									<label for="jobseeker-ad">Achievements/Description</label>
+									<textarea class="form-control" id="jobseeker-ad" rows="5"></textarea>
+								 </div>
+								 
+								<h4>Work Experience</h4>
+								
+								<br>
+								<div class="form-group row">
+								  <label for="jobseeker-comp" class="col-xs-2 col-form-label">Company Name:</label>
+									<div class="col-xs-10">
+										<input class="form-control" type="text" value="University of the Philippines" id="jobseeker-comp">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="jobseeker-jt" class="col-xs-2 col-form-label">Job Title</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="text" value="College" id="jobseeker-jt">
+								  </div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="jobseeker-fromj" class="col-xs-2 col-form-label">From:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="month" value="2014-08" id="jobseeker-fromj">
+								  </div>
+								</div>
+								
+								<div class="form-group row">
+								  <label for="jobseeker-toj" class="col-xs-2 col-form-label">To:</label>
+								  <div class="col-xs-10">
+									<input class="form-control" type="month" value="2016-06" id="jobseeker-toj">
+								  </div>
+								</div>
+								
+								<div class="form-group">
+									<label for="jobseeker-ad">Achievements/Description</label>
+									<textarea class="form-control" id="jobseeker-ad" rows="5"></textarea>
+								 </div>
+								 
+								 <button type="submit" class="btn btn-primary">Submit</button>
+								 
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+	
+	<footer class="footer">
+		<div class="container">
+			<hr>
+			<p class="text-muted">© CAREER.IO 2016</p>
+		</div>
+	</footer>
+	<script src="assets/angular.min.js"></script>
+	<script src="controller/searchjob.js"></script>
+</body>
+
+</html>
