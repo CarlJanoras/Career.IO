@@ -1,5 +1,6 @@
 drop database if exists jobFinder;
 create database jobFinder;
+use jobFinder;
 
 create table JOB_SEEKER (
  account_id     int auto_increment primary key not null,
