@@ -1,4 +1,4 @@
-drop if exists jobFinder;
+drop if exist jobFinder;
 create database jobFinder;
 
 create table JOB_SEEKER (
