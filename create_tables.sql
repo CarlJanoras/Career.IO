@@ -85,7 +85,7 @@ create table EDUCATION (
 
 create table REQUIREMENT (
  requirement_id            int auto_increment primary key not null,
- educational_attainment    varchar(256) not null,
+ educational_attainment    enum('Bachelor\'s Degree', 'High School', 'Vocational Course', 'Associate\'s Degree', 'Master\'s Degree', 'Doctorate'),
  job_id                    int not null,
  Constraint               `fk_requirement_job`
   foreign key (job_id) references JOB (job_id)
