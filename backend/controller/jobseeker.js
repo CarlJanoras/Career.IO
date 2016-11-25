@@ -23,7 +23,7 @@ exposrts.getJobSeekerApplied = function(res, req) {
 	);
 };
 
-exports.addJobseeker = function(res, req) {
+exports.addJobSeeker = function(res, req) {
 	var query = "insert into" 
 		+ "	JOB_SEEKER ("	
 		+ "		email, password, last_login, "
