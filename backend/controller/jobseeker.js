@@ -72,7 +72,7 @@ exports.getJobSeeker = function(res, req) {
 	var job_seeker_educations;
 	db.query(queryJobSeeker, 
 		[
-			req.body.account_id
+			req.query.account_id
 		],
 		function(err, rows) {
 			if (err) {
@@ -84,7 +84,7 @@ exports.getJobSeeker = function(res, req) {
 	
 	db.query(queryJobSeekerSkill,
 		[
-			req.body.account_id
+			req.query.account_id
 		],
 		function(err, rows) {
 			if (err) {
@@ -97,7 +97,7 @@ exports.getJobSeeker = function(res, req) {
 	
 	db.query(queryJobSeekerWorkExp,
 		[
-			req.body.account_id
+			req.query.account_id
 		],
 		function(err, rows) {
 			if (err) {
@@ -110,7 +110,7 @@ exports.getJobSeeker = function(res, req) {
 	
 	db.query(queryJobSeekerEduc,
 		[
-			req.body.account_id
+			req.query.account_id
 		],
 		function(err, rows) {
 			if (err) {
@@ -121,4 +121,53 @@ exports.getJobSeeker = function(res, req) {
 		}
 	);
 	res.send(job_seeker_row);
+};
+
+exports.updateJobSeeker = function (res, req) {
+	var jobSeekerDetails = req.body;
+	// update atomic attributes
+	var queryUpdJobSeeker = "update "
+				+ "	JOB_SEEKER "
+				+ "set "
+				+ "	? "
+				+ "where "
+				+ "	account_id = ?";
+	// delete original skills
+	var queryDelSkills = "delete from "
+			+ "	JOB_SEEKER_SKILL "
+			+ "where "
+			+ "	account_id = ?";
+	// add new/edited set of skills
+		// for each skill 
+	var queryInsertSkill = "insert into "
+				+ "	JOB_SEEKER_SKILL "
+				+ "values ("
+				+ "	?, ?"
+				+ ")";
+	// delete original work experiences
+	var queryDelWorkExp = "delete from "
+			+ "	WORK_EXPERIENCE "
+			+ "where "
+			+ "	account_id = ?";
+	// add new/edited set of work experiences
+		// for each work experience 	
+	var queryInsertWorkExp = "insert into "
+			+ "		WORK_EXPERIENCE "
+			+ "values ("
+			+ "		NULL, ?, ?, ?, ?, ?, ?"
+			+ ")";
+	// delete original education
+	var queryDelEduc = "delete from "
+			+ "	EDUCATION "
+			+ "where "
+			+ "	account_id = ?";
+	// add new/edited set of education
+		// for each education 	
+	var queryInsertEduc = "insert into "
+			+ "	EDUCATION "
+			+ "values ("
+			+ "	NULL, ?, ?, ?, ?, ?, ?"
+			+ ")";
+	db.query(
+	);
 };
