@@ -118,7 +118,7 @@ exports.getJobSeeker = function(res, req) {
 			job_seeker_row.educ = job_seeker_educations;
 		}
 	);
-	res.send(job_seeker_row);
+	res.send(job_seeker_row)
 };
 
 exports.updateJobSeeker = function (res, req) {
@@ -142,7 +142,7 @@ exports.updateJobSeeker = function (res, req) {
 				+ "	address = ?, "
 				+ "	city = ?, "
 				+ "	country = ?, "
-				+ "	description = ?, "
+				+ "	description = ? "
 				+ "where "
 				+ "	account_id = ?";
 	db.query(queryUpdJobSeeker,
