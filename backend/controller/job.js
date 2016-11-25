@@ -126,8 +126,19 @@ exports.addJob = function (res, req) {
 };
 
 exports.updateJob = function (res, req) {
-var query1	= "update JOB set ? "
-+ "	where job_id = ? and account_id = ?";
+	// update atomic attributes
+	var queryUpdJob	= "update 
+		+ "	 	JOB
+		+ " 	set "
+		+ "		? "
+		+ "	where job_id = ? and account_id = ?";
+	db.query(queryUpdJob,
+		[
+			req.query.job_id,
+			req.query.account_id
+		],
+		function (err,rows)
+	);	
 // set educational attainment
 var query2	= "update REQUIREMENT set "
 + "	educational_attainment = ? "
