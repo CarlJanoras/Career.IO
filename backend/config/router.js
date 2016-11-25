@@ -9,26 +9,29 @@ module.exports = function(router) {
     var root_obj = { root: path.join(__dirname, '../frontend') };
 
     router.get('/getJob',               __.job       .getJob            );
-    router.get('/getJobSeeker',         __.jobseeker .getJobSeeker      );
-    router.get('/getEmployer',          __.employer  .getEmployer       );
-    router.get('/getAppliesByJob',      __.applies   .getAppliesByJob   );
-    router.get('/getAppliesByEmp',      __.applies   .getAppliesByEmp   );
-
+    router.get('/searchJob',            __.job       .searchJob         );
+    router.get('/getJob_available',     __.job       .getJob_available  );
     router.post('/addJob',              __.job       .addJob            );
-    router.post('/addJobSeeker',        __.jobseeker .addJobSeeker      );
-    router.post('/addEmployer',         __.employer  .addEmployer       );
-    router.post('/addApplication',      __.applies   .addApplies        );
-
     router.post('/updateJob',           __.job       .updateJob         );
-    router.post('/updateJobSeeker',     __.jobseeker .updateJobSeeker   );
-    router.post('/updateEmployer',      __.employer  .updateEmployer    );
-
     router.post('/deleteJob',           __.job       .deleteJob         );
+    
+    router.get('/getJobSeeker',         __.jobseeker .getJobSeeker      );
+    router.post('/addJobSeeker',        __.jobseeker .addJobSeeker      );
+    router.post('/updateJobSeeker',     __.jobseeker .updateJobSeeker   );
     router.post('/deleteJobSeeker',     __.jobseeker .deleteJobSeeker   );
+    
+    router.get('/getEmployer',          __.employer  .getEmployer       );
+    router.get('/searchEmployer',       __.employer  .searchEmployer    );
+    router.post('/addEmployer',         __.employer  .addEmployer       );
+    router.post('/updateEmployer',      __.employer  .updateEmployer    );
     router.post('/deleteEmployer',      __.employer  .deleteEmployer    );
 
-    router.get('/searchJob',            __.job       .searchJob         );
-    router.get('/searchEmployer',       __.employer  .searchEmployer    );
+    router.get('/getAppliesByJob',      __.applies   .getAppliesByjob   );
+    router.post('/addApplication',      __.applies   .addApplies        );
+
+
+
+
 
     
     router.get('/job',              function(req, res) {
