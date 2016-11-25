@@ -8,6 +8,23 @@ exports.getJob = function (res, req) {
 			+ "	job_level, salary, application_deadline, "
 			+ "	industry, address, city, country, date_posted "
 			+ "from JOB where job_id = ?";
+			
+	var query2 = "select "
+	        + " requirement_id, educational_attainment from REQUIREMENT where job_id = ?";
+		
+	var requirement_id;	
+	db.query(query2,
+	   [
+	       req.query.job_id
+	   ],
+	   function (err, rows) {
+			if (err) {
+				return res.status(500).send({code: err.code});
+			}
+			requirement_id = rows[0].requirement_id;
+		}
+	)
+	
 	db.query(query,
 		[
 			req.query.job_id
@@ -16,7 +33,8 @@ exports.getJob = function (res, req) {
 			if (err) {
 				return res.status(500).send({code: err.code});
 			}
-			res.send(rows[0]);
+			rows[0].requirement_id = requirement_id;
+			return rows[0];
 		}
 	);
 };
@@ -36,9 +54,9 @@ exports.searchJob = function (res, req) {
 	db.query(query,
 		[
 			req.query.job_title,
-			req.query.job_description,
+			req.query.job_description
 		],
-		 function (err, rows) {
+		function (err, rows) {
 			if (err) {
 				return res.status(500).send({code: err.code});
 			}
@@ -47,8 +65,23 @@ exports.searchJob = function (res, req) {
 	);	
 };
 
-exports.getJob_available = function (res, req) {
-
+exports.getJobAvailable = function (res, req) {
+    var query   = "select "
+                + "    job_id, job_title, employment_type, "
+                + "    job_level, industry, city, country, "
+                + "    application_deadline, date_posted "
+                + "from JOB where application_deadline > curdate() "
+                + "    order by date_posted asc";
+                
+    db.query(query, 
+        [],
+        function (err, rows) {
+			if (err) {
+				return res.status(500).send({code: err.code});
+			}
+			res.send(rows);
+        }
+    );
 };
 
 exports.addJob = function (res, req) {
@@ -87,11 +120,10 @@ exports.addJob = function (res, req) {
 		}
 	);
 	// set educational attainment
-	var queryInsertReqEducation = "insert into 
-				+ " 		REQUIREMENT "
-				+ "values (
-				+ " 		NULL, ?, LAST_INSERT_ID()
-				+ ")";
+	var queryInsertReqEducation = "insert into "
+				                + "     REQUIREMENT "
+			                   	+ "values ( "
+			                	+ "     NULL, ?, LAST_INSERT_ID())";
 	db.query(queryInsertReqEducation,
 		[
 			job.educational_attainment			
@@ -106,10 +138,10 @@ exports.addJob = function (res, req) {
 
 	// for each skill
 	var queryInsertSkill = "insert into "
-				+ "	REQUIREMENT_SKILL "
-				+ "values ("
-				+ "	?, LAST_INSERT_ID()
-				+ ")";
+				        + "	REQUIREMENT_SKILL "
+			            + "values ("
+			            + "	?, LAST_INSERT_ID()"
+				        + ")";
 	for (count = 0; count < job.skill.length; count++) {
 		db.query(queryInsertSkill,
 			[
@@ -126,32 +158,104 @@ exports.addJob = function (res, req) {
 };
 
 exports.updateJob = function (res, req) {
+	var job = req.body;
 	// update atomic attributes
-	var queryUpdJob	= "update 
-		+ "	 	JOB
-		+ " 	set "
-		+ "		? "
-		+ "	where job_id = ? and account_id = ?";
+	var queryUpdJob	= "update "
+	            	+ "	 	JOB "
+	               	+ "set "
+	               	+ "     title = ?, description = ?, "
+	            	+ "     employment_type = ?, job_level  = ?, "
+	            	+ "     salary = ?, application_deadline = ?, "
+	            	+ "     industry = ?, address = ?, "
+	            	+ "     city = ?, address = ?, "
+	            	+ "     country = ? "
+	            	+ "where job_id = ?";
+	            	
 	db.query(queryUpdJob,
 		[
-			req.query.job_id,
-			req.query.account_id
+		    job.title,
+			job.description,
+			job.employment_type,
+			job.job_level,
+			job.salary,
+			job.application_deadline,
+			job.industry,
+			job.address,
+			job.country,
+			job.job_id
 		],
-		function (err,rows)
+		function (err,rows) {
+			if (err) {
+					return res.status(500).send({code: err.code});
+				}
+				res.send(rows);    
+		}
 	);	
-// set educational attainment
-var query2	= "update REQUIREMENT set "
-+ "	educational_attainment = ? "
-+ "	where job_id = ?";
-// first delete original skills
-var query3 	= "delete from REQUIREMENT_SKILL "
-+ "	where requirement_id = ?";
-// add new/edited set of skills
-// for each skill 
-var query3 	= "delete from insert into REQUIREMENT_SKILL "
-+ "	values (?, ?)";
+    // set educational attainment
+    var queryUpdEducnAttain	= "update REQUIREMENT set "
+                             + "	educational_attainment = ? "
+                             + "	where job_id = ?";
+	db.query(queryUpdEducnAttain,
+		[
+			job.educational_attainment,
+			job.job_id
+		],
+		function (err,rows) {
+			if (err) {
+					return res.status(500).send({code: err.code});
+				}
+				res.send(rows);    
+		}
+	);	
+
+
+    // first delete original skills
+    var queryDelSkill = "delete from REQUIREMENT_SKILL "
+                    + "	where requirement_id = ?";
+    db.query(queryDelSkill,
+		[
+			job.requirement_id
+		],
+		function (err,rows) {
+			if (err) {
+					return res.status(500).send({code: err.code});
+			}
+			res.send(rows);    
+		}
+	);	
+    // add new/edited set of skills
+    // for each skill 
+    var queryInsertSkill = "insert into REQUIREMENT_SKILL "
+        + "	values (?, ?)";
+    for (var count = 0; count < job.skill.length; count++) {
+        db.query(queryInsertSkill,
+                [
+                    job.requirement_id,
+                    job.skill[count]
+                ],
+                function (err, rows) {
+                    if (err) {
+        					return res.status(500).send({code: err.code});
+        			}
+        			res.send(rows);
+                }
+        );
+    }
 };
 
 exports.deleteJob = function (res, req) {
+    var query 	= "delete from JOB "
+    + "	where job_id = ?";
 
+    db.query(query,
+            [
+                req.body.job_id
+            ],
+            function (err, rows) {
+                 if (err) {
+        					return res.status(500).send({code: err.code});
+        			}
+        			res.send(rows);
+            }
+    );
 };
