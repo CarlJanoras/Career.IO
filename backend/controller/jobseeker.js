@@ -46,11 +46,11 @@ exports.getJobSeeker = function(res, req) {
 		+ "	JOB_SEEKER "
 		+ "where "
 		+ "	account_id = ?";
-	var queryJobSeekerSkill = "select 
-				+ "	skill 
-				+ "from 
-				+ "	JOB_SEEKER_SKILL 
-				+ "where 
+	var queryJobSeekerSkill = "select "
+				+ "	skill "
+				+ "from "
+				+ "	JOB_SEEKER_SKILL "
+				+ "where "
 				+ "	account_id = ?";
 	var queryJobSeekerWorkExp = "select "
 				+ "	job_title, employer, start, "
