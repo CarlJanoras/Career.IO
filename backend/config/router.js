@@ -26,7 +26,7 @@ module.exports = function(router) {
     router.post('/updateEmployer',      __.employer  .updateEmployer            );
     router.post('/deleteEmployer',      __.employer  .deleteEmployer            );
 
-    router.get('/getJobSeekerApplied',      __.applies   .getJobSeekerApplied   );
+    router.get('/getJobSeekerApplied',      __.jobseeker   .getJobSeekerApplied   );
     router.post('/addApplication',      __.applies   .addApplies                );
 
 
