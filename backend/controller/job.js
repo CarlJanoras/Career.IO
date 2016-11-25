@@ -2,7 +2,7 @@
 
 var db = require(__dirname + '/../mysql');
 
-exports.getJob = function (res, req) {
+exports.getJob = function (req, res) {
 	var query	= "select "
 			+ "	job_title, job_description, employment_type, "
 			+ "	job_level, salary, application_deadline, "
@@ -11,8 +11,14 @@ exports.getJob = function (res, req) {
 			
 	var query2 = "select "
 	        + " requirement_id, educational_attainment from REQUIREMENT where job_id = ?";
-		
-	var requirement_id;	
+
+	var query3 = "select skill from REQUIREMENT_SKILL where requirement_id = ?";
+
+	var requirement_id;
+	var skills;
+	var educational_attainment;
+	
+
 	db.query(query2,
 	   [
 	       req.query.job_id
@@ -21,22 +27,35 @@ exports.getJob = function (res, req) {
 			if (err) {
 				return res.status(500).send({code: err.code});
 			}
-			requirement_id = rows[0].requirement_id;
-		}
-	)
-	
-	db.query(query,
-		[
-			req.query.job_id
-		],
-		 function (err, rows) {
-			if (err) {
-				return res.status(500).send({code: err.code});
+				requirement_id = rows[0].requirement_id;
+				educational_attainment = rows[0].educational_attainment;
+				db.query(query3,
+					[
+						requirement_id
+					],
+					function (err, rows) {
+						if (err) {
+							return res.status(500).send({code: err.code});
+						}
+						skills = rows;
+						db.query(query,
+							[
+								req.query.job_id
+							],
+							 function (err, rows) {
+								if (err) {
+									return res.status(500).send({code: err.code});
+								}
+								rows[0].skills = skills;
+								rows[0].requirement_id = requirement_id;
+								rows[0].educational_attainment = educational_attainment;
+								res.send(rows[0]);
+							}
+						);
+					}
+				);
 			}
-			rows[0].requirement_id = requirement_id;
-			return rows[0];
-		}
-	);
+	)
 };
 
 exports.searchJob = function (res, req) {
