@@ -6,7 +6,7 @@ var config = {
 	PORT: 3005,
 	IP: 'localhost',
 
-	ASSETS_DIR: path.normalize(__dirname + '/../frontend'),
+	ASSETS_DIR: path.normalize(__dirname + '/../../frontend'),
 
 
 	DATABASE_CREDENTIALS: {
