@@ -2,7 +2,7 @@
 
 var db = require(__dirname + '/../mysql');
 
-exports.addJobseeker = function(req, res) {
+exports.addJobseeker = function(res, req) {
 	var query = "insert into" 
 		+ "	JOB_SEEKER ("	
 		+ "		email, password, last_login, "
@@ -19,8 +19,6 @@ exports.addJobseeker = function(req, res) {
 		[
 			req.body.email,
 			req.body.password,
-			req.body.last_login,
-			req.body.creation_date,
 			req.body.first_name,
 			req.body.middle_name,
 			req.body.last_name,
@@ -104,7 +102,7 @@ exports.getJobSeeker = function(res, req) {
 				return res.status(500).send({code: err.code});
 			}
 			job_seeker_experiences = rows;
-			job_seeker_row.work_exp = job_seeker_experiences;
+			job_seeker_row.workExp = job_seeker_experiences;
 		}
 	);
 	
@@ -117,26 +115,75 @@ exports.getJobSeeker = function(res, req) {
 				return res.status(500).send({code: err.code});
 			}
 			job_seeker_educations = rows;
-			job_seeker_row.educations = job_seeker_educations;
+			job_seeker_row.educ = job_seeker_educations;
 		}
 	);
 	res.send(job_seeker_row);
 };
 
 exports.updateJobSeeker = function (res, req) {
-	var jobSeekerDetails = req.body;
+	var jobSeeker = req.body;
+	var count;
+	//email, password, first_name, middle_name, last_name, 
+	//birthday, phone_number, sex, address, city, country, description,
+	
 	// update atomic attributes
 	var queryUpdJobSeeker = "update "
 				+ "	JOB_SEEKER "
 				+ "set "
-				+ "	? "
+				+ "	email = ?, "
+				+ "	password = ?, "
+				+ "	first_name = ?, "
+				+ "	middle_name = ?, "
+				+ "	last_name = ?, "
+				+ "	birthday = ?, "
+				+ "	phone_number = ?, "
+				+ "	sex = ?, "
+				+ "	address = ?, "
+				+ "	city = ?, "
+				+ "	country = ?, "
+				+ "	description = ?, "
 				+ "where "
 				+ "	account_id = ?";
+	db.query(queryUpdJobSeeker,
+		[
+			jobSeeker.email,
+			jobSeeker.password,
+			jobSeeker.first_name,
+			jobSeeker.middle_name,
+			jobSeeker.last_name,
+			jobSeeker.birthday,
+			jobSeeker.phone_number,
+			jobSeeker.sex,
+			jobSeeker.address,
+			jobSeeker.city,
+			jobSeeker.country,
+			jobSeeker.description,
+			req.query.account_id		
+		],
+		function(err, rows) {
+			if (err) {
+				return res.status(500).send({code: err.code});
+			}
+			res.send(rows);
+		}
+	);
 	// delete original skills
 	var queryDelSkills = "delete from "
 			+ "	JOB_SEEKER_SKILL "
 			+ "where "
 			+ "	account_id = ?";
+	db.query(queryDelSkills,
+		[
+			req.query.account_id
+		],
+		function(err, rows) {
+			if (err) {
+				return res.status(500).send({code: err.code});
+			}
+			res.send(rows);
+		}
+	);
 	// add new/edited set of skills
 		// for each skill 
 	var queryInsertSkill = "insert into "
@@ -144,11 +191,36 @@ exports.updateJobSeeker = function (res, req) {
 				+ "values ("
 				+ "	?, ?"
 				+ ")";
+	for (count = 0; count < jobSeeker.skill.length; count++) {
+		db.query(queryInsertSkill,
+			[
+				req.query.account_id, 
+				jobSeeker.skill[count]
+			],
+			function (err, rows) {
+				if (err) {
+					return res.status(500).send({code: err.code});
+				}
+				res.send(rows);
+			}
+		);
+	}
 	// delete original work experiences
 	var queryDelWorkExp = "delete from "
 			+ "	WORK_EXPERIENCE "
 			+ "where "
 			+ "	account_id = ?";
+	db.query(queryDelWorkExp,
+		[
+			req.query.account_id
+		],
+		function(err, rows) {
+			if (err) {
+				return res.status(500).send({code: err.code});
+			}
+			res.send(rows);
+		}
+	);
 	// add new/edited set of work experiences
 		// for each work experience 	
 	var queryInsertWorkExp = "insert into "
@@ -156,18 +228,81 @@ exports.updateJobSeeker = function (res, req) {
 			+ "values ("
 			+ "		NULL, ?, ?, ?, ?, ?, ?"
 			+ ")";
+	for (count = 0; count < jobSeeker.workExp.length; count++) {
+		db.query(queryInsertWorkExp,
+			[
+				jobSeeker.workExp[count].job_title,
+				jobSeeker.workExp[count].employer,
+				jobSeeker.workExp[count].start,
+				jobSeeker.workExp[count].finished,
+				jobSeeker.workExp[count].description,
+				req.query.account_id
+			],
+			function (err, rows) {
+				if (err) {
+					return res.status(500).send({code: err.code});
+				}
+				res.send(rows);
+			}
+		);
+	}
 	// delete original education
 	var queryDelEduc = "delete from "
 			+ "	EDUCATION "
 			+ "where "
 			+ "	account_id = ?";
-	// add new/edited set of education
+	db.query(queryDelEduc,
+		[
+			req.query.account_id
+		],
+		function(err, rows) {
+			if (err) {
+				return res.status(500).send({code: err.code});
+			}
+			res.send(rows);
+		}
+	);// add new/edited set of education
 		// for each education 	
 	var queryInsertEduc = "insert into "
 			+ "	EDUCATION "
 			+ "values ("
 			+ "	NULL, ?, ?, ?, ?, ?, ?"
 			+ ")";
-	db.query(
+	for (count = 0; count < jobSeeker.educ.length; count++) {
+		db.query(queryInsertWorkExp,
+			[
+				jobSeeker.educ[count].description,
+				jobSeeker.educ[count].school_name,
+				jobSeeker.educ[count].finished,
+				jobSeeker.educ[count].start,
+				jobSeeker.educ[count].attainment,
+				req.query.account_id
+			],
+			function (err, rows) {
+				if (err) {
+					return res.status(500).send({code: err.code});
+				}
+				res.send(rows);
+			}
+		);
+	}
+	
+};
+
+exports.deleteJobSeeker = function (res, req) {
+	var query = "delete from "
+		+ "	JOB_SEEKER "
+		+ "where "
+		+ "	account_id = ?";
+	db.query(query,
+		[
+			req.query.account_id
+		],
+		function(err, rows) {
+			if (err) {
+				return res.status(500).send({code: err.code});
+			}
+			res.send(rows);
+		}
 	);
 };
