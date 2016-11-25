@@ -6,7 +6,7 @@ var path = require('path');
 module.exports = function(router) {
 
     var __ = importer.dirloadSync(__dirname + '/controller');
-    var root_obj = { root: path.join(__dirname, '../frontend') };
+    var root_obj = { root: path.join(__dirname, '/../../frontend') };
 
     router.get('/getJob',               __.job       .getJob                    );
     router.get('/searchJob',            __.job       .searchJob                 );
