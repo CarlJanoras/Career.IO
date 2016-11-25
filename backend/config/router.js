@@ -8,26 +8,26 @@ module.exports = function(router) {
     var __ = importer.dirloadSync(__dirname + '/controller');
     var root_obj = { root: path.join(__dirname, '../frontend') };
 
-    router.get('/getJob',               __.job       .getJob            );
-    router.get('/searchJob',            __.job       .searchJob         );
-    router.get('/getJob_available',     __.job       .getJob_available  );
-    router.post('/addJob',              __.job       .addJob            );
-    router.post('/updateJob',           __.job       .updateJob         );
-    router.post('/deleteJob',           __.job       .deleteJob         );
+    router.get('/getJob',               __.job       .getJob                    );
+    router.get('/searchJob',            __.job       .searchJob                 );
+    router.get('/getJob_available',     __.job       .getJob_available          );
+    router.post('/addJob',              __.job       .addJob                    );
+    router.post('/updateJob',           __.job       .updateJob                 );  
+    router.post('/deleteJob',           __.job       .deleteJob                 );
     
-    router.get('/getJobSeeker',         __.jobseeker .getJobSeeker      );
-    router.post('/addJobSeeker',        __.jobseeker .addJobSeeker      );
-    router.post('/updateJobSeeker',     __.jobseeker .updateJobSeeker   );
-    router.post('/deleteJobSeeker',     __.jobseeker .deleteJobSeeker   );
+    router.get('/getJobSeeker',         __.jobseeker .getJobSeeker              );
+    router.post('/addJobSeeker',        __.jobseeker .addJobSeeker              );
+    router.post('/updateJobSeeker',     __.jobseeker .updateJobSeeker           );
+    router.post('/deleteJobSeeker',     __.jobseeker .deleteJobSeeker           );
     
-    router.get('/getEmployer',          __.employer  .getEmployer       );
-    router.get('/searchEmployer',       __.employer  .searchEmployer    );
-    router.post('/addEmployer',         __.employer  .addEmployer       );
-    router.post('/updateEmployer',      __.employer  .updateEmployer    );
-    router.post('/deleteEmployer',      __.employer  .deleteEmployer    );
+    router.get('/getEmployer',          __.employer  .getEmployer               );
+    router.get('/searchEmployer',       __.employer  .searchEmployer            );
+    router.post('/addEmployer',         __.employer  .addEmployer               );
+    router.post('/updateEmployer',      __.employer  .updateEmployer            );
+    router.post('/deleteEmployer',      __.employer  .deleteEmployer            );
 
-    router.get('/getAppliesByJob',      __.applies   .getAppliesByjob   );
-    router.post('/addApplication',      __.applies   .addApplies        );
+    router.get('/getJobSeekerApplied',      __.applies   .getJobSeekerApplied   );
+    router.post('/addApplication',      __.applies   .addApplies                );
 
 
 
