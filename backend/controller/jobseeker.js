@@ -2,7 +2,7 @@
 
 var db = require(__dirname + '/../mysql');
 
-exposrts.getJobSeekerApplied = function(res, req) {
+exports.getJobSeekerApplied = function(res, req) {
 	var query 	= "select "
 			+ "	account_id, email, first_name, "
 			+ "	middle_name, last_name, "
