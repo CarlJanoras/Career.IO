@@ -2,6 +2,27 @@
 
 var db = require(__dirname + '/../mysql');
 
+exposrts.getJobSeekerApplied = function(res, req) {
+	var query 	= "select "
+			+ "	account_id, email, first_name, "
+			+ "	middle_name, last_name, "
+			+ "	sex, city, country "
+			+ "from JOB_SEEKER "
+			+ "where account_id in "
+			+ "	(select distinct account_id from APPLIES where job_id = ?)";
+	db.query(query,
+		[
+			req.query.job_id
+		],
+		function(err, rows) {
+			if (err) {
+				return res.status(500).send({code: err.code});
+			}
+			res.send(rows);
+		}
+	);
+};
+
 exports.addJobseeker = function(res, req) {
 	var query = "insert into" 
 		+ "	JOB_SEEKER ("	
