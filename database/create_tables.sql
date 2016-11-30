@@ -117,9 +117,17 @@ create table WORK_EXPERIENCE (
   on update restrict
 );
 
-create table APPLIES (
+create table APPLICATION (
  account_id        int not null,
  job_id            int not null,
  date_applied      date not null,
- PRIMARY KEY       (account_id, job_id, date_applied)
+ PRIMARY KEY       (account_id, job_id, date_applied),
+ Constraint       `fk_account_id_job_seeker`
+  foreign key (account_id) REFERENCES JOB_SEEKER (account_id)
+  on delete cascade
+  on update restrict,
+ Constraint       `fk_job_id_job`
+  foreign key (job_id) REFERENCES JOB (job_id)
+  on delete cascade
+  on update restrict
 );
