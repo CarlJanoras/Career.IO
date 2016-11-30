@@ -7,4 +7,4 @@ mysql -uroot < insert_applications.sql      && echo "Inserted Application Data" 
 mysql -uroot < jobseeker_procedures.sql     && echo "Inserted Job Seekers Procedures" && 
 mysql -uroot < employer_procedures.sql      && echo "Inserted Employers Procedures"   && 
 mysql -uroot < job_procedures.sql           && echo "Inserted Jobs Procedures"        && 
-mysql -uroot < application_procedures.sql   && echo "Inserted Application Procedures" &&     
+mysql -uroot < application_procedures.sql   && echo "Inserted Application Procedures"  
