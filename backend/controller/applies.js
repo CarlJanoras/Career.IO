@@ -4,7 +4,7 @@
 var db = require(__dirname + '/../mysql');
 
 exports.addApplication = function(res, req) {
-      var query = "insert into APPLIES "
+      var query = "insert into APPLICATION "
             + "values (?, ?, CURDATE())";
       db.query(query,
               [
