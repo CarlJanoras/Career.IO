@@ -9,7 +9,7 @@ exports.getJobSeekerApplied = function(res, req) {
 			+ "	sex, city, country "
 			+ "from JOB_SEEKER "
 			+ "where account_id in "
-			+ "	(select distinct account_id from APPLIES where job_id = ?)";
+			+ "	(select distinct account_id from APPLICATION where job_id = ?)";
 	db.query(query,
 		[
 			req.query.job_id
