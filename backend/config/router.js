@@ -5,12 +5,12 @@ var path = require('path');
 
 module.exports = function(router) {
 
-    var __ = importer.dirloadSync(__dirname + '/controller');
+    var __ = importer.dirloadSync(__dirname + '/../controller');
     var root_obj = { root: path.join(__dirname, '/../../frontend') };
 
     router.get('/getJob',               __.job       .getJob                    );
     router.get('/searchJob',            __.job       .searchJob                 );
-    router.get('/getJob_available',     __.job       .getJob_available          );
+    router.get('/getJob_available',     __.job       .getJobAvailable           );
     router.post('/addJob',              __.job       .addJob                    );
     router.post('/updateJob',           __.job       .updateJob                 );  
     router.post('/deleteJob',           __.job       .deleteJob                 );
@@ -26,8 +26,8 @@ module.exports = function(router) {
     router.post('/updateEmployer',      __.employer  .updateEmployer            );
     router.post('/deleteEmployer',      __.employer  .deleteEmployer            );
 
-    router.get('/getJobSeekerApplied',      __.jobseeker   .getJobSeekerApplied   );
-    router.post('/addApplication',      __.applies   .addApplies                );
+    router.get('/getJobSeekerApplied',  __.jobseeker   .getJobSeekerApplied     );
+    router.post('/addApplication',      __.application .addApplication          );
 
 
 
